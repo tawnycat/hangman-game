@@ -1,12 +1,32 @@
 // Create array of movie stars
 
 var movieStars = [
-	"Humphrey Bogart", "James Stewart", "Fred Astaire", "Clark Gable", "Charlie Chaplin", "Gregory Peck", "John Wayne", "Gene Kelly", "Orson Welles", "James Dean", "Buster Keaton", "Sidney Poitier", "Katharine Hepburn", "Bette Davis", "Audrey Hepburn", "Greta Garbo", "Marilyn Monroe", "Elizabeth Taylor", "Judy Garland", "Marlene Dietrich", "Joan Crawford", "Grace Kelly", "Rita Hayworth", "Lauren Bacall", "Jean Harlow"
+"Humphrey Bogart", "James Stewart", "Fred Astaire", "Clark Gable", "Charlie Chaplin", "Gregory Peck", "John Wayne", "Gene Kelly", "Orson Welles", "James Dean", "Buster Keaton", "Sidney Poitier", "Katharine Hepburn", "Bette Davis", "Audrey Hepburn", "Greta Garbo", "Marilyn Monroe", "Elizabeth Taylor", "Judy Garland", "Marlene Dietrich", "Joan Crawford", "Grace Kelly", "Rita Hayworth", "Lauren Bacall", "Jean Harlow"
 ]
 
 // Randomly choose one movie star
 
+var randStar = movieStars[Math.floor(Math.random() * movieStars.length)];
+console.log(randStar);
+
 // Display the empty characters for the user
+// INPUT: rand
+// OUTPUT: underscoreStar  
+
+function emptyHangman(str) {
+
+	var underscoreStar = "";
+
+	for (var i = 0; i < str.length; i++) {
+		if (str[i].match(/[a-z]/i)) {
+			underscoreStar += "_ "
+		} else {
+			underscoreStar += " "
+		}
+	} 
+	return underscoreStar
+}
+console.log(emptyHangman(randStar));
 
 // Recognize that the user is hitting a key
 
