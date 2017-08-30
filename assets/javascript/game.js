@@ -7,7 +7,6 @@ var movieStars = [
 // Randomly choose one movie star
 
 var randStar = movieStars[Math.floor(Math.random() * movieStars.length)];
-console.log(randStar);
 
 // Display the empty characters for the user
 // INPUT: rand
@@ -19,16 +18,24 @@ function emptyHangman(str) {
 
 	for (var i = 0; i < str.length; i++) {
 		if (str[i].match(/[a-z]/i)) {
-			underscoreStar += "_ "
+			underscoreStar += "_&nbsp;&nbsp;"
 		} else {
-			underscoreStar += " "
+			underscoreStar += "&nbsp;&nbsp;&nbsp;"
 		}
 	} 
 	return underscoreStar
 }
-console.log(emptyHangman(randStar));
+
+window.onload = function() {
+
+	var guessboxDiv = document.getElementById("guess-box");
+	guessboxDiv.innerHTML = emptyHangman(randStar);
+
+};
 
 // Recognize that the user is hitting a key
+
+
 
 // Recognize whether this is a winning or losing guess
 
