@@ -5,8 +5,11 @@ var movieStars = [
 ]
 
 // Randomly choose one movie star
+// Sets up guessed letters box and other scores
 
 var randStar = movieStars[Math.floor(Math.random() * movieStars.length)];
+var letters = "";
+var badGuessCounter = 10;
 
 // Display the empty characters for the user  
 
@@ -31,6 +34,9 @@ window.onload = function() {
 	var guessboxDiv = document.getElementById("guess-box");
 	guessboxDiv.innerHTML = emptyHangman(randStar);
 
+	var guessNumberDiv = document.getElementById("guess-number");
+	guessNumberDiv.innerHTML = badGuessCounter;
+
 };
 
 // Recognize that the user is hitting a key, ignore F5
@@ -39,10 +45,12 @@ document.onkeyup = function(event) {
 
 	var letter = String.fromCharCode(event.keyCode).toLowerCase();
 
+
 	if (event.keyCode === 116 && event.key != "t") {
 
 		return;
 	}
+
 
 // Recognize whether this is a winning or losing guess
 
@@ -60,16 +68,27 @@ for (var i = 0; i < randStar.length; i++) {
 
 		guessedStar += underscoreStar[i];
 
-
 	}
 
 }
 
-// Add winning and losing guesses to list of already guessed letters
+// Adds losing guesses to guessed letters variable without duplication, count bad guesses
 
+	if (letters.indexOf(letter) === -1 && guessedStar.indexOf(letter) === -1) {
+
+	letters += letter + "\u00A0";
+
+	badGuessCounter--;
+
+	var guessNumberDiv = document.getElementById("guess-number");
+	guessNumberDiv.innerHTML = badGuessCounter;
+
+}
+
+// Update list of already guessed letters
 
 	var alreadyGuessedDiv = document.getElementById("multi-use-box");
-	alreadyGuessedDiv.innerHTML = "ALREADY GUESSED: " + letter;
+	alreadyGuessedDiv.innerHTML = "ALREADY GUESSED: " + letters.toUpperCase();
 
 
 // Add winning guess to name
@@ -82,17 +101,13 @@ for (var i = 0; i < randStar.length; i++) {
 
 };
 
-// Add losing guess to bad guess list
-
-
-
-// Allow three bad guesses before a loss
-
 // If they win or lose, add one to appropriate score
 
 // Display either "You win!" or "You lose"
 
 // Display photo of the movie star at the end of the game
 
-// Reset the game by pressing any key
+// Reset the game automically 
+
+// BONUS: generate a hint for each movieStar name
 
