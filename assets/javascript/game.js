@@ -74,7 +74,7 @@ for (var i = 0; i < randStar.length; i++) {
 
 // Adds losing guesses to guessed letters variable without duplication, count bad guesses
 
-	if (letters.indexOf(letter) === -1 && guessedStar.indexOf(letter) === -1) {
+	if (letters.indexOf(letter) === -1 && guessedStar.toLowerCase().indexOf(letter) === -1) {
 
 	letters += letter + "\u00A0";
 
