@@ -10,6 +10,9 @@ var movieStars = [
 var randStar = movieStars[Math.floor(Math.random() * movieStars.length)];
 var letters = "";
 var badGuessCounter = 10;
+var winCounter = 0;
+var loseCounter = 0;
+
 
 // Display the empty characters for the user  
 
@@ -29,6 +32,8 @@ function emptyHangman(str) {
 
 var underscoreStar = emptyHangman(randStar);
 
+// All scores and info needed on page load goes here
+
 window.onload = function() {
 
 	var guessboxDiv = document.getElementById("guess-box");
@@ -36,6 +41,9 @@ window.onload = function() {
 
 	var guessNumberDiv = document.getElementById("guess-number");
 	guessNumberDiv.innerHTML = badGuessCounter;
+
+	var winCounterDiv = document.getElementById("win-number");
+	winCounterDiv.innerHTML = winCounter;
 
 };
 
@@ -74,7 +82,7 @@ for (var i = 0; i < randStar.length; i++) {
 
 // Adds losing guesses to guessed letters variable without duplication, count bad guesses
 
-	if (letters.indexOf(letter) === -1 && guessedStar.toLowerCase().indexOf(letter) === -1) {
+if (letters.indexOf(letter) === -1 && guessedStar.toLowerCase().indexOf(letter) === -1) {
 
 	letters += letter + "\u00A0";
 
@@ -87,21 +95,36 @@ for (var i = 0; i < randStar.length; i++) {
 
 // Update list of already guessed letters
 
-	var alreadyGuessedDiv = document.getElementById("multi-use-box");
-	alreadyGuessedDiv.innerHTML = "ALREADY GUESSED: " + letters.toUpperCase();
+var alreadyGuessedDiv = document.getElementById("multi-use-box");
+alreadyGuessedDiv.innerHTML = "ALREADY GUESSED: " + letters.toUpperCase();
 
 
 // Add winning guess to name
 
-	underscoreStar = guessedStar;
+underscoreStar = guessedStar;
 
-	var guessboxDiv = document.getElementById("guess-box");
-	guessboxDiv.innerHTML = guessedStar;
+var guessboxDiv = document.getElementById("guess-box");
+guessboxDiv.innerHTML = guessedStar;
+
+
+// If they win or lose, add one to appropriate score
+
+console.log(guessedStar);
+console.log(randStar);
+
+if (guessedStar.replace("\u00A0", " ") === randStar) {
+
+	winCounter++;
+
+	var winCounterDiv = document.getElementById("win-number");
+	winCounterDiv.innerHTML = winCounter;
+
+}
 
 
 };
 
-// If they win or lose, add one to appropriate score
+
 
 // Display either "You win!" or "You lose"
 
