@@ -141,9 +141,10 @@ if (guessedStar.replace("\u00A0", " ") === randStar) {
 	var winCounterDiv = document.getElementById("win-number");
 	winCounterDiv.innerHTML = winCounter;
 
-	startOver();
+	var starPhotoDiv = document.getElementById("star-photo");
+	starPhotoDiv.src = "assets/images/" + randStar + ".jpg";
 
-	console.log(badGuessCounter);
+	startOver();
 
 }
 
@@ -159,11 +160,6 @@ if (badGuessCounter === 0) {
 }
 
 };
-
-
-// Reset the game automically 
-
-
 
 // Display photo of the movie star at the end of the game
 
