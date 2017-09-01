@@ -8,9 +8,7 @@ var movieStars = [
 
 var randStar = movieStars[Math.floor(Math.random() * movieStars.length)];
 
-// Display the empty characters for the user
-// INPUT: rand
-// OUTPUT: underscoreStar  
+// Display the empty characters for the user  
 
 function emptyHangman(str) {
 
@@ -18,13 +16,15 @@ function emptyHangman(str) {
 
 	for (var i = 0; i < str.length; i++) {
 		if (str[i].match(/[a-z]/i)) {
-			underscoreStar += "_&nbsp;&nbsp;"
+			underscoreStar += "_"
 		} else {
-			underscoreStar += "&nbsp;&nbsp;&nbsp;"
+			underscoreStar += "\u00A0"
 		}
 	} 
 	return underscoreStar
 }
+
+var underscoreStar = emptyHangman(randStar);
 
 window.onload = function() {
 
@@ -33,17 +33,58 @@ window.onload = function() {
 
 };
 
-// Recognize that the user is hitting a key
+// Recognize that the user is hitting a key, ignore F5
 
+document.onkeyup = function(event) {
 
+	var letter = String.fromCharCode(event.keyCode).toLowerCase();
+
+	if (event.keyCode === 116 && event.key != "t") {
+
+		return;
+	}
 
 // Recognize whether this is a winning or losing guess
 
+var guessedStar = "";
+
+
+for (var i = 0; i < randStar.length; i++) {
+	
+	if (letter === randStar[i].toLowerCase()) {
+
+		guessedStar += randStar[i];
+
+
+	} else {
+
+		guessedStar += underscoreStar[i];
+
+
+	}
+
+}
+
+// Add winning and losing guesses to list of already guessed letters
+
+
+	var alreadyGuessedDiv = document.getElementById("multi-use-box");
+	alreadyGuessedDiv.innerHTML = "ALREADY GUESSED: " + letter;
+
+
 // Add winning guess to name
+
+	underscoreStar = guessedStar;
+
+	var guessboxDiv = document.getElementById("guess-box");
+	guessboxDiv.innerHTML = guessedStar;
+
+
+};
 
 // Add losing guess to bad guess list
 
-// Add winning and losing guesses to list of already guessed letters
+
 
 // Allow three bad guesses before a loss
 
