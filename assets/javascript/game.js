@@ -45,6 +45,9 @@ window.onload = function() {
 	var winCounterDiv = document.getElementById("win-number");
 	winCounterDiv.innerHTML = winCounter;
 
+	var loseCounterDiv = document.getElementById("loss-number");
+	loseCounterDiv.innerHTML = loseCounter;
+
 };
 
 // Recognize that the user is hitting a key, ignore F5
@@ -109,9 +112,6 @@ guessboxDiv.innerHTML = guessedStar;
 
 // If they win or lose, add one to appropriate score
 
-console.log(guessedStar);
-console.log(randStar);
-
 if (guessedStar.replace("\u00A0", " ") === randStar) {
 
 	winCounter++;
@@ -121,9 +121,16 @@ if (guessedStar.replace("\u00A0", " ") === randStar) {
 
 }
 
+if (badGuessCounter === 0) {
+
+	loseCounter++;
+
+	var loseCounterDiv = document.getElementById("loss-number");
+	loseCounterDiv.innerHTML = loseCounter;
+
+}
 
 };
-
 
 
 // Display either "You win!" or "You lose"
