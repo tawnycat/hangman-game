@@ -111,6 +111,28 @@ guessboxDiv.innerHTML = guessedStar;
 
 
 // If they win or lose, add one to appropriate score
+// Reset the game once the game ends
+
+function startOver() {
+
+	randStar = movieStars[Math.floor(Math.random() * movieStars.length)];
+
+	underscoreStar = emptyHangman(randStar);
+
+	letters = "";
+
+	badGuessCounter = 10;
+
+	var guessboxDiv = document.getElementById("guess-box");
+	guessboxDiv.innerHTML = emptyHangman(randStar);
+
+	var guessNumberDiv = document.getElementById("guess-number");
+	guessNumberDiv.innerHTML = badGuessCounter
+
+	var alreadyGuessedDiv = document.getElementById("multi-use-box");
+	alreadyGuessedDiv.innerHTML = "ALREADY GUESSED: " + letters.toUpperCase();
+
+}
 
 if (guessedStar.replace("\u00A0", " ") === randStar) {
 
@@ -118,6 +140,10 @@ if (guessedStar.replace("\u00A0", " ") === randStar) {
 
 	var winCounterDiv = document.getElementById("win-number");
 	winCounterDiv.innerHTML = winCounter;
+
+	startOver();
+
+	console.log(badGuessCounter);
 
 }
 
@@ -128,16 +154,18 @@ if (badGuessCounter === 0) {
 	var loseCounterDiv = document.getElementById("loss-number");
 	loseCounterDiv.innerHTML = loseCounter;
 
+	startOver();
+
 }
 
 };
 
 
-// Display either "You win!" or "You lose"
+// Reset the game automically 
+
+
 
 // Display photo of the movie star at the end of the game
-
-// Reset the game automically 
 
 // BONUS: generate a hint for each movieStar name
 
