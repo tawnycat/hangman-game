@@ -1,0 +1,10 @@
+#starphoto {
+	max-height: 450px;
+	max-width: 450px;
+}
+
+body {
+	background-color: black;
+	color: white;
+	font-family: 'Josefin Slab', serif;
+}
