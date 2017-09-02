@@ -7,4 +7,15 @@ body {
 	background-color: black;
 	color: white;
 	font-family: 'Josefin Slab', serif;
+	font-size: 20px;
+}
+
+#guess-box {
+	font-size: 24px;
+}
+
+h1 {
+	font-family: 'Abril Fatface', cursive;
+	font-size: 50px;
+	color: #a9a9a9;
 }
