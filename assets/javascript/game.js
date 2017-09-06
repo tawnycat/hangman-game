@@ -148,6 +148,8 @@ if (guessedStar.replace("\u00A0", " ") === randStar) {
 	var winCounterDiv = document.getElementById("win-number");
 	winCounterDiv.innerHTML = winCounter;
 
+	// Display photo of the movie star at the end of the game
+
 	var starPhotoDiv = document.getElementById("star-photo");
 	starPhotoDiv.src = "assets/images/" + randStar + ".jpg";
 
@@ -168,7 +170,6 @@ if (badGuessCounter === 0) {
 
 };
 
-// Display photo of the movie star at the end of the game
 
-// BONUS: generate a hint for each movieStar name
+
 
