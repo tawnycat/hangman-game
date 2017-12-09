@@ -10,7 +10,7 @@ Use your keyboard to guess letters and fill in the puzzle.
 
 ![playing the game](assets/images/abouttowin.PNG)
 
-Once you win, the photo on the left hand side will change to match the star that you guessed. 
+Once you win, the photo on the left hand side will change to match the star that you guessed and a new star to guess will be generated. 
 
 ![winner](assets/images/winner.PNG)
 
