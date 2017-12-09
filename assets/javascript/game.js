@@ -56,8 +56,6 @@ document.onkeyup = function(event) {
 
 	var letter = String.fromCharCode(event.keyCode).toLowerCase();
 
-	console.log(event);
-
 
 	if (event.keyCode === 116 && event.key != "t") {
 
